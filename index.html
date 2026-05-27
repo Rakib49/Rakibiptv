@@ -13,105 +13,139 @@ content="width=device-width, initial-scale=1.0">
 
 body{
 margin:0;
-background:#070b1a;
+background:#050816;
 font-family:Arial;
 color:white;
+overflow-x:hidden;
 }
 
 header{
+
 background:linear-gradient(90deg,#ff1493,#ff69b4);
-padding:16px;
+padding:18px;
 text-align:center;
-font-size:30px;
+font-size:32px;
 font-weight:bold;
-color:white;
-box-shadow:0 0 15px #ff1493;
+box-shadow:0 0 20px #ff1493;
 }
 
 .player-container{
+
 position:relative;
 background:black;
 }
 
 video{
+
 width:100%;
-height:230px;
+height:240px;
 background:black;
 }
 
-.controls{
-position:absolute;
-bottom:10px;
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:25px;
-}
-
-.control-btn{
-
-width:60px;
-height:60px;
-border-radius:50%;
-border:none;
-font-size:28px;
-background:#ff1493;
-color:white;
-box-shadow:0 0 10px #ff1493;
-}
-
 .search-box{
-padding:12px;
-background:#111827;
+
+padding:14px;
+background:#0b1225;
 }
 
 .search-box input{
 
 width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
+padding:16px;
 font-size:18px;
-background:#1e293b;
+border:none;
+border-radius:14px;
+background:#131c31;
 color:white;
 outline:none;
 }
 
 #channels{
-padding:10px;
+
+padding:12px;
+padding-bottom:100px;
 }
 
 .channel{
 
 display:flex;
 align-items:center;
-gap:15px;
-background:#111827;
-padding:14px;
-margin-top:10px;
-border-radius:14px;
+gap:16px;
+background:#10182d;
+padding:16px;
+margin-top:12px;
+border-radius:18px;
 cursor:pointer;
 transition:.3s;
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 }
 
 .channel:hover{
+
 background:#ff149320;
 transform:scale(1.02);
 }
 
 .channel img{
 
-width:55px;
-height:55px;
-border-radius:12px;
+width:60px;
+height:60px;
+border-radius:14px;
 object-fit:cover;
 }
 
 .active{
+
 border:2px solid #ff1493;
+box-shadow:0 0 12px #ff1493;
+}
+
+/* Floating Controls */
+
+.controls{
+
+position:fixed;
+bottom:12px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:10px;
+background:rgba(10,10,20,.85);
+padding:10px 14px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+z-index:999;
+box-shadow:0 0 20px #ff149360;
+}
+
+.control-btn{
+
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+background:#ff1493;
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.control-btn:active{
+
+transform:scale(.92);
+}
+
+.volume{
+
+width:90px;
+}
+
+.fullscreen{
+
+font-size:18px;
 }
 
 </style>
@@ -125,20 +159,7 @@ border:2px solid #ff1493;
 
 <div class="player-container">
 
-<video id="video" controls autoplay></video>
-
-<div class="controls">
-
-<button class="control-btn"
-onclick="prevChannel()">⏮</button>
-
-<button class="control-btn"
-onclick="togglePlay()">⏯</button>
-
-<button class="control-btn"
-onclick="nextChannel()">⏭</button>
-
-</div>
+<video id="video" autoplay controls></video>
 
 </div>
 
@@ -152,6 +173,32 @@ onkeyup="searchChannel()">
 </div>
 
 <div id="channels"></div>
+
+<!-- Floating Bottom Controls -->
+
+<div class="controls">
+
+<button class="control-btn"
+onclick="prevChannel()">⏮</button>
+
+<button class="control-btn"
+onclick="togglePlay()">⏯</button>
+
+<button class="control-btn"
+onclick="nextChannel()">⏭</button>
+
+<input type="range"
+class="volume"
+min="0"
+max="1"
+step="0.1"
+value="1"
+oninput="changeVolume(this.value)">
+
+<button class="control-btn fullscreen"
+onclick="toggleFullscreen()">⛶</button>
+
+</div>
 
 <script>
 
@@ -314,6 +361,32 @@ video.play();
 else{
 
 video.pause();
+
+}
+
+}
+
+function changeVolume(value){
+
+document.getElementById('video')
+.volume = value;
+
+}
+
+function toggleFullscreen(){
+
+const video =
+document.getElementById('video');
+
+if(document.fullscreenElement){
+
+document.exitFullscreen();
+
+}
+
+else{
+
+video.requestFullscreen();
 
 }
 

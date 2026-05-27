@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Rakib IPTV</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -9,22 +13,69 @@
 
 body{
 margin:0;
-background:#0f172a;
+background:#070b1a;
 font-family:Arial;
 color:white;
 }
 
 header{
-background:#111827;
-padding:15px;
+background:linear-gradient(90deg,#ff1493,#ff69b4);
+padding:16px;
 text-align:center;
-font-size:24px;
+font-size:30px;
 font-weight:bold;
+color:white;
+box-shadow:0 0 15px #ff1493;
+}
+
+.player-container{
+position:relative;
+background:black;
 }
 
 video{
 width:100%;
+height:230px;
 background:black;
+}
+
+.controls{
+position:absolute;
+bottom:10px;
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+}
+
+.control-btn{
+
+width:60px;
+height:60px;
+border-radius:50%;
+border:none;
+font-size:28px;
+background:#ff1493;
+color:white;
+box-shadow:0 0 10px #ff1493;
+}
+
+.search-box{
+padding:12px;
+background:#111827;
+}
+
+.search-box input{
+
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:18px;
+background:#1e293b;
+color:white;
+outline:none;
 }
 
 #channels{
@@ -32,25 +83,35 @@ padding:10px;
 }
 
 .channel{
-background:#1e293b;
-padding:12px;
-margin-top:10px;
-border-radius:10px;
-cursor:pointer;
+
 display:flex;
 align-items:center;
-gap:10px;
-}
-
-.channel img{
-width:40px;
-height:40px;
-border-radius:8px;
-object-fit:cover;
+gap:15px;
+background:#111827;
+padding:14px;
+margin-top:10px;
+border-radius:14px;
+cursor:pointer;
+transition:.3s;
+font-size:20px;
+font-weight:bold;
 }
 
 .channel:hover{
-background:#334155;
+background:#ff149320;
+transform:scale(1.02);
+}
+
+.channel img{
+
+width:55px;
+height:55px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.active{
+border:2px solid #ff1493;
 }
 
 </style>
@@ -59,10 +120,36 @@ background:#334155;
 <body>
 
 <header>
-Rakib IPTV
+🌸 Rakib IPTV 🌸
 </header>
 
+<div class="player-container">
+
 <video id="video" controls autoplay></video>
+
+<div class="controls">
+
+<button class="control-btn"
+onclick="prevChannel()">⏮</button>
+
+<button class="control-btn"
+onclick="togglePlay()">⏯</button>
+
+<button class="control-btn"
+onclick="nextChannel()">⏭</button>
+
+</div>
+
+</div>
+
+<div class="search-box">
+
+<input type="text"
+id="search"
+placeholder="Search channel..."
+onkeyup="searchChannel()">
+
+</div>
 
 <div id="channels"></div>
 
@@ -71,8 +158,13 @@ Rakib IPTV
 const playlist =
 'https://raw.githubusercontent.com/Rakib49/Rakibiptv/refs/heads/main/aynaott.m3u';
 
+let channels = [];
+let currentIndex = 0;
+
 fetch(playlist)
+
 .then(response => response.text())
+
 .then(data => {
 
 const lines = data.split('\n');
@@ -98,28 +190,60 @@ logo = logoMatch[1];
 
 }
 
+channels.push({
+name,
+url,
+logo
+});
+
+}
+
+}
+
+renderChannels();
+
+if(channels.length > 0){
+
+playChannel(0);
+
+}
+
+});
+
+function renderChannels(){
+
+const container =
+document.getElementById('channels');
+
+container.innerHTML = '';
+
+channels.forEach((ch,index)=>{
+
 const div =
 document.createElement('div');
 
 div.className = 'channel';
 
 div.innerHTML = `
-<img src="${logo}">
-<div>${name}</div>
+
+<img src="${ch.logo}">
+<div>${ch.name}</div>
+
 `;
 
-div.onclick = () => playVideo(url);
+div.onclick = ()=> playChannel(index);
 
-document.getElementById('channels')
-.appendChild(div);
-
-}
-
-}
+container.appendChild(div);
 
 });
 
-function playVideo(url){
+}
+
+function playChannel(index){
+
+currentIndex = index;
+
+const channel = channels[index];
 
 const video =
 document.getElementById('video');
@@ -128,7 +252,7 @@ if(Hls.isSupported()){
 
 const hls = new Hls();
 
-hls.loadSource(url);
+hls.loadSource(channel.url);
 
 hls.attachMedia(video);
 
@@ -136,9 +260,92 @@ hls.attachMedia(video);
 
 else{
 
-video.src = url;
+video.src = channel.url;
 
 }
+
+document.querySelectorAll('.channel')
+.forEach(el=> el.classList.remove('active'));
+
+document.querySelectorAll('.channel')[index]
+.classList.add('active');
+
+}
+
+function nextChannel(){
+
+currentIndex++;
+
+if(currentIndex >= channels.length){
+
+currentIndex = 0;
+
+}
+
+playChannel(currentIndex);
+
+}
+
+function prevChannel(){
+
+currentIndex--;
+
+if(currentIndex < 0){
+
+currentIndex = channels.length -1;
+
+}
+
+playChannel(currentIndex);
+
+}
+
+function togglePlay(){
+
+const video =
+document.getElementById('video');
+
+if(video.paused){
+
+video.play();
+
+}
+
+else{
+
+video.pause();
+
+}
+
+}
+
+function searchChannel(){
+
+const input =
+document.getElementById('search')
+.value.toLowerCase();
+
+const channelDivs =
+document.querySelectorAll('.channel');
+
+channels.forEach((ch,index)=>{
+
+if(ch.name.toLowerCase()
+.includes(input)){
+
+channelDivs[index]
+.style.display = 'flex';
+
+}
+
+else{
+
+channelDivs[index]
+.style.display = 'none';
+
+}
+
+});
 
 }
 

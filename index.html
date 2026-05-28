@@ -3,7 +3,8 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Rakib IPTV</title>
 
@@ -27,6 +28,8 @@ color:white;
 overflow-x:hidden;
 }
 
+/* HEADER */
+
 .header{
 background:#000;
 padding:14px;
@@ -41,6 +44,8 @@ color:#ff1a1a;
 text-shadow:0 0 10px red;
 }
 
+/* PLAYER */
+
 .player-box{
 position:relative;
 width:100%;
@@ -53,6 +58,8 @@ height:250px;
 background:black;
 object-fit:contain;
 }
+
+/* CONTROLS */
 
 .custom-controls{
 
@@ -92,6 +99,8 @@ box-shadow:
 
 }
 
+/* SEARCH */
+
 .search-box{
 padding:14px;
 }
@@ -113,6 +122,8 @@ color:white;
 
 }
 
+/* CHANNEL GRID */
+
 .channel-grid{
 
 display:grid;
@@ -125,6 +136,8 @@ gap:12px;
 padding:12px;
 
 }
+
+/* CHANNEL */
 
 .channel{
 
@@ -163,6 +176,8 @@ object-fit:contain;
 
 }
 
+/* ACTIVE */
+
 .active{
 
 border:3px solid #00ff84 !important;
@@ -172,6 +187,8 @@ box-shadow:
 0 0 25px rgba(0,255,132,.7);
 
 }
+
+/* LIVE COUNTER */
 
 .live-counter{
 
@@ -203,6 +220,8 @@ opacity:0;
 transition:.4s;
 
 }
+
+/* CONTACT */
 
 .contact-title{
 
@@ -257,6 +276,8 @@ background:#229ED9;
 background:#1877F2;
 }
 
+/* FOOTER */
+
 .footer{
 
 text-align:center;
@@ -286,6 +307,8 @@ color:red;
 
 </div>
 
+<!-- LIVE COUNTER -->
+
 <div class="live-counter">
 
 🟢 Live Users :
@@ -297,6 +320,8 @@ color:red;
 <span id="totalViews">0</span>
 
 </div>
+
+<!-- PLAYER -->
 
 <div class="player-box">
 
@@ -334,6 +359,8 @@ onclick="nextChannel()">
 
 </div>
 
+<!-- SEARCH -->
+
 <div class="search-box">
 
 <input type="text"
@@ -346,10 +373,14 @@ onkeyup="searchChannels()">
 
 </div>
 
+<!-- CHANNEL GRID -->
+
 <div class="channel-grid"
 id="channelGrid">
 
 </div>
+
+<!-- CONTACT -->
 
 <h2 class="contact-title">
 
@@ -385,11 +416,15 @@ class="facebook">
 
 <script>
 
+/* PLAYLIST */
+
 const playlist =
 'https://raw.githubusercontent.com/Rakib49/Rakibiptv/refs/heads/main/aynaott.m3u';
 
 let channels = [];
 let currentIndex = 0;
+
+/* LOAD PLAYLIST */
 
 fetch(playlist)
 
@@ -435,6 +470,8 @@ playChannel(0);
 
 });
 
+/* RENDER */
+
 function renderChannels(){
 
 const grid =
@@ -462,6 +499,8 @@ grid.appendChild(div);
 });
 
 }
+
+/* PLAY */
 
 function playChannel(index){
 
@@ -511,6 +550,8 @@ document.querySelectorAll('.channel')[index]
 
 }
 
+/* NEXT */
+
 function nextChannel(){
 
 currentIndex++;
@@ -524,6 +565,8 @@ currentIndex=0;
 playChannel(currentIndex);
 
 }
+
+/* PREV */
 
 function prevChannel(){
 
@@ -539,6 +582,8 @@ channels.length-1;
 playChannel(currentIndex);
 
 }
+
+/* PLAY PAUSE */
 
 function togglePlay(){
 
@@ -558,6 +603,8 @@ video.pause();
 }
 
 }
+
+/* SEARCH */
 
 function searchChannels(){
 
@@ -589,6 +636,8 @@ cards[index]
 
 }
 
+/* AUTO HIDE */
+
 const controls =
 document.querySelector('.custom-controls');
 
@@ -615,6 +664,104 @@ document.querySelector('.player-box')
 .addEventListener('click',()=>{
 
 showUI();
+
+});
+
+</script>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+
+getDatabase,
+ref,
+set,
+get,
+onValue,
+push
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyA2L1dayNYWlDz6dKc3a_N0eoyDaLSlPj0",
+
+authDomain:
+"rakib-iptv.firebaseapp.com",
+
+databaseURL:
+"https://rakib-iptv-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+projectId:
+"rakib-iptv",
+
+storageBucket:
+"rakib-iptv.firebasestorage.app",
+
+messagingSenderId:
+"299021620847",
+
+appId:
+"1:299021620847:web:20e1cd003d9c6ced815f9a"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getDatabase(app);
+
+const liveRef =
+ref(db,'liveUsers');
+
+const totalRef =
+ref(db,'totalViews');
+
+const userRef =
+push(liveRef);
+
+set(userRef,true);
+
+onValue(liveRef,(snapshot)=>{
+
+const data =
+snapshot.val();
+
+const count =
+data ? Object.keys(data).length : 0;
+
+document.getElementById('liveUsers')
+.innerText=count;
+
+});
+
+get(totalRef).then(snapshot=>{
+
+let total =
+snapshot.val() || 0;
+
+total++;
+
+set(totalRef,total);
+
+});
+
+onValue(totalRef,(snapshot)=>{
+
+const total =
+snapshot.val() || 0;
+
+document.getElementById('totalViews')
+.innerText=total;
 
 });
 

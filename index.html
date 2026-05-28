@@ -228,18 +228,18 @@ box-shadow:
 
 }
 
-/* VISITOR */
+/* LIVE COUNTER */
 
 .live-counter{
 
 position:fixed;
 
-top:90px;
+bottom:90px;
 left:15px;
 
 z-index:9999;
 
-background:rgba(0,0,0,.75);
+background:rgba(0,0,0,.78);
 
 padding:12px 16px;
 
@@ -250,10 +250,14 @@ font-weight:bold;
 
 color:white;
 
-backdrop-filter:blur(6px);
+backdrop-filter:blur(8px);
 
 box-shadow:
 0 0 12px rgba(0,255,100,.45);
+
+opacity:0;
+
+transition:.4s;
 
 }
 
@@ -736,22 +740,29 @@ document.body.classList.toggle('light');
 const controls =
 document.querySelector('.custom-controls');
 
+const visitor =
+document.querySelector('.live-counter');
+
+function showUI(){
+
+controls.style.opacity='1';
+visitor.style.opacity='1';
+
 setTimeout(()=>{
 
 controls.style.opacity='0';
+visitor.style.opacity='0';
 
-},5000);
+},10000);
+
+}
+
+showUI();
 
 document.querySelector('.player-box')
 .addEventListener('click',()=>{
 
-controls.style.opacity='1';
-
-setTimeout(()=>{
-
-controls.style.opacity='0';
-
-},5000);
+showUI();
 
 });
 

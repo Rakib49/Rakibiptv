@@ -401,3 +401,6 @@ http://202.70.146.135:8000/play/a05z/index.m3u8
 
 #EXTINF:-1 tvg-name="Rajdhani TV" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(12).jpeg" group-title="Movies",Rajdhani TV
 https://stream.shariarsuvo.com/hls6/rajdhaniweb.m3u8
+
+#EXTINF:-1 tvg-name="NRB TV" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(13).jpeg" group-title="Movies",NRB TV
+https://app.ncare.live/live-orgin/nrb-eu.stream/playlist.m3u8

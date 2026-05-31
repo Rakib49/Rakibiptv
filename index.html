@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Rakib IPTV</title>
-
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-html,body{
-background:#000;
-color:white;
-overflow-x:hidden;
-scroll-behavior:smooth;
-}
 
 /* HEADER */
 
@@ -35,7 +6,7 @@ scroll-behavior:smooth;
 
 background:#000;
 
-padding:16px;
+padding:14px;
 
 text-align:center;
 
@@ -44,26 +15,52 @@ border-bottom:3px solid red;
 
 position:sticky;
 top:0;
-z-index:999;
+z-index:99999;
 
 }
+
+/* ANIMATED TITLE */
 
 .header h1{
 
 font-size:42px;
 font-weight:bold;
 
-background:linear-gradient(90deg,#ff0000,#ff4d4d,#ffffff,#ff0000);
+background:linear-gradient(
+90deg,
+#ff0000,
+#ff00ff,
+#00ffff,
+#00ff00,
+#ffff00,
+#ff0000
+);
+
+background-size:400%;
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
-text-shadow:
-0 0 10px rgba(255,0,0,.7),
-0 0 20px rgba(255,0,0,.5),
-0 0 35px rgba(255,0,0,.3);
+animation:glow 5s linear infinite;
 
-letter-spacing:2px;
+text-shadow:
+0 0 10px rgba(255,0,0,.8),
+0 0 20px rgba(255,0,0,.6),
+0 0 35px rgba(255,0,0,.4);
+
+}
+
+/* COLOR ANIMATION */
+
+@keyframes glow{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:400%;
+}
 
 }
 
@@ -71,44 +68,34 @@ letter-spacing:2px;
 
 .player-box{
 
-position:relative;
-width:100%;
-background:black;
-overflow:hidden;
+position:sticky;
+top:78px;
+
+z-index:999;
+
+background:#000;
+
+padding-bottom:8px;
 
 }
 
 video{
 
 width:100%;
-height:82vh;
+height:260px;
 
-background:black;
+background:#000;
 
 object-fit:contain;
 
 }
 
-/* MOBILE */
+/* PC + TV */
 
-@media(max-width:768px){
-
-video{
-height:260px;
-}
-
-.header h1{
-font-size:34px;
-}
-
-}
-
-/* PC */
-
-@media(min-width:1200px){
+@media(min-width:1000px){
 
 video{
-height:92vh;
+height:82vh;
 }
 
 }
@@ -119,13 +106,13 @@ height:92vh;
 
 position:absolute;
 
+top:50%;
 left:50%;
-bottom:35px;
 
-transform:translateX(-50%);
+transform:translate(-50%,-50%);
 
 display:flex;
-gap:20px;
+gap:18px;
 
 z-index:9999;
 
@@ -135,8 +122,8 @@ transition:.4s;
 
 .control-btn{
 
-width:65px;
-height:65px;
+width:62px;
+height:62px;
 
 border:none;
 border-radius:50%;
@@ -145,49 +132,19 @@ background:rgba(255,0,0,.92);
 
 color:white;
 
-font-size:25px;
+font-size:24px;
 font-weight:bold;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-cursor:pointer;
-
-backdrop-filter:blur(8px);
-
 box-shadow:
 0 0 15px rgba(255,0,0,.8);
 
 }
 
-/* SEARCH */
-
-.search-box{
-
-padding:14px;
-background:#000;
-
-}
-
-.search-box input{
-
-width:100%;
-padding:18px;
-
-font-size:22px;
-
-border:none;
-outline:none;
-
-border-radius:22px;
-
-background:#111;
-color:white;
-
-}
-
-/* GRID */
+/* CHANNEL GRID */
 
 .channel-grid{
 
@@ -216,19 +173,15 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-cursor:pointer;
+border:3px solid #00d9ff;
+
+box-shadow:
+0 0 12px rgba(0,217,255,.8);
 
 transition:.3s;
 
-border:3px solid #00cfff;
+cursor:pointer;
 
-box-shadow:
-0 0 10px rgba(0,207,255,.8);
-
-}
-
-.channel:hover{
-transform:scale(1.03);
 }
 
 .channel img{
@@ -248,11 +201,11 @@ border:3px solid #00ff66 !important;
 
 box-shadow:
 0 0 15px #00ff66,
-0 0 35px rgba(0,255,102,.7) !important;
+0 0 30px rgba(0,255,102,.8) !important;
 
 }
 
-/* LIVE COUNTER */
+/* LIVE */
 
 .live-counter{
 
@@ -274,11 +227,6 @@ z-index:99999;
 
 backdrop-filter:blur(10px);
 
-box-shadow:
-0 0 10px rgba(255,255,255,.15);
-
-transition:.4s;
-
 }
 
 /* CONTACT */
@@ -289,7 +237,7 @@ text-align:center;
 
 padding:20px;
 
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 
 }
@@ -300,7 +248,7 @@ display:flex;
 justify-content:center;
 gap:20px;
 
-padding-bottom:30px;
+padding-bottom:25px;
 
 }
 
@@ -330,243 +278,11 @@ background:#229ED9;
 background:#1877F2;
 }
 
-/* FOOTER */
-
-.footer{
-
-text-align:center;
-
-padding:18px;
-
-font-size:18px;
-font-weight:bold;
-
-border-top:2px solid red;
-
-background:#000;
-
-}
-
-.footer span{
-color:red;
-}
-
 </style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-
-<div class="header">
-
-<h1>Rakib IPTV</h1>
-
-</div>
-
-<!-- PLAYER -->
-
-<div class="player-box">
-
-<video id="video"
-autoplay
-playsinline
-controls>
-
-</video>
-
-<!-- CONTROLS -->
-
-<div class="custom-controls" id="controls">
-
-<button class="control-btn"
-onclick="prevChannel()">
-
-⏮
-
-</button>
-
-<button class="control-btn"
-onclick="togglePlay()">
-
-⏯
-
-</button>
-
-<button class="control-btn"
-onclick="nextChannel()">
-
-⏭
-
-</button>
-
-</div>
-
-</div>
-
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<input type="text"
-id="search"
-
-placeholder="Search Channel..."
-
-onkeyup="searchChannels()">
-
-</div>
-
-<!-- LIVE USERS -->
-
-<div class="live-counter" id="liveCounter">
-
-🟢 Live Users : <span id="liveUsers">81</span><br>
-
-👁 Total Views : <span id="totalViews">13093</span>
-
-</div>
-
-<!-- CHANNEL GRID -->
-
-<div class="channel-grid"
-id="channelGrid">
-
-</div>
-
-<!-- CONTACT -->
-
-<div class="contact">
-
-আমার টিভি সম্পর্কে মতামত জানাতে
-
-</div>
-
-<div class="social">
-
-<a href="https://t.me/rprakib49"
-target="_blank"
-class="telegram">
-
-<i class="fab fa-telegram-plane"></i>
-
-</a>
-
-<a href="https://www.facebook.com/rprakib49"
-target="_blank"
-class="facebook">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-</div>
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-© 2026 <span>RAKIB IPTV</span>
-
-</div>
 
 <script>
 
-/* PLAYLIST */
-
-const playlist =
-'https://raw.githubusercontent.com/Rakib49/Rakibiptv/refs/heads/main/aynaott.m3u';
-
-/* VARIABLES */
-
-let channels = [];
-
-let currentIndex = 0;
-
-/* LOAD PLAYLIST */
-
-fetch(playlist)
-
-.then(response => response.text())
-
-.then(data => {
-
-const lines = data.split('\n');
-
-for(let i=0;i<lines.length;i++){
-
-if(lines[i].startsWith('#EXTINF')){
-
-const info = lines[i];
-
-const url = lines[i+1];
-
-const name = info.split(',')[1];
-
-let logo = '';
-
-const logoMatch =
-info.match(/tvg-logo="(.*?)"/);
-
-if(logoMatch){
-
-logo = logoMatch[1];
-
-}
-
-channels.push({
-
-name,
-url,
-logo
-
-});
-
-}
-
-}
-
-renderChannels();
-
-if(channels.length > 0){
-
-playChannel(0);
-
-}
-
-});
-
-/* RENDER */
-
-function renderChannels(){
-
-const grid =
-document.getElementById('channelGrid');
-
-grid.innerHTML='';
-
-channels.forEach((ch,index)=>{
-
-const div =
-document.createElement('div');
-
-div.className='channel';
-
-div.innerHTML=`
-
-<img src="${ch.logo}" alt="${ch.name}">
-
-`;
-
-div.onclick=()=>playChannel(index);
-
-grid.appendChild(div);
-
-});
-
-}
-
-/* PLAY CHANNEL */
+/* CHANNEL CLICK */
 
 function playChannel(index){
 
@@ -618,7 +334,7 @@ el.classList.remove('active');
 document.querySelectorAll('.channel')[index]
 .classList.add('active');
 
-/* AUTO SCROLL */
+/* ONLY CHANNEL LIST SCROLL */
 
 document.querySelectorAll('.channel')[index]
 .scrollIntoView({
@@ -630,96 +346,10 @@ block:'center'
 
 }
 
-/* NEXT */
-
-function nextChannel(){
-
-currentIndex++;
-
-if(currentIndex >= channels.length){
-
-currentIndex=0;
-
-}
-
-playChannel(currentIndex);
-
-}
-
-/* PREV */
-
-function prevChannel(){
-
-currentIndex--;
-
-if(currentIndex < 0){
-
-currentIndex=
-channels.length-1;
-
-}
-
-playChannel(currentIndex);
-
-}
-
-/* PLAY PAUSE */
-
-function togglePlay(){
-
-const video =
-document.getElementById('video');
-
-if(video.paused){
-
-video.play();
-
-}
-
-else{
-
-video.pause();
-
-}
-
-}
-
-/* SEARCH */
-
-function searchChannels(){
-
-const input =
-document.getElementById('search')
-.value.toLowerCase();
-
-const cards =
-document.querySelectorAll('.channel');
-
-channels.forEach((ch,index)=>{
-
-if(ch.name.toLowerCase()
-.includes(input)){
-
-cards[index]
-.style.display='flex';
-
-}
-
-else{
-
-cards[index]
-.style.display='none';
-
-}
-
-});
-
-}
-
-/* AUTO HIDE CONTROLS */
+/* CONTROL AUTO HIDE */
 
 const controls =
-document.getElementById('controls');
+document.querySelector('.custom-controls');
 
 function showControls(){
 
@@ -741,28 +371,4 @@ document.querySelector('.player-box')
 
 showControls();
 
-/* FULLSCREEN */
-
-const video =
-document.getElementById('video');
-
-video.addEventListener('dblclick',()=>{
-
-if(!document.fullscreenElement){
-
-video.requestFullscreen();
-
-}
-
-else{
-
-document.exitFullscreen();
-
-}
-
-});
-
 </script>
-
-</body>
-</html>

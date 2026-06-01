@@ -40,7 +40,7 @@ border-bottom:3px solid red;
 .header h1{
 font-size:36px;
 color:#ff1a1a;
-text-shadow:0 0 12px red;
+text-shadow:0 0 15px red;
 }
 
 /* PLAYER */
@@ -93,10 +93,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-box-shadow:
-0 0 15px rgba(255,0,0,.5);
-
 cursor:pointer;
+
+box-shadow:
+0 0 15px rgba(255,0,0,.6);
 
 }
 
@@ -153,10 +153,10 @@ align-items:center;
 
 cursor:pointer;
 
-border:2px solid #00d0ff;
+border:2px solid #00cfff;
 
 box-shadow:
-0 0 10px rgba(0,208,255,.5);
+0 0 12px rgba(0,207,255,.5);
 
 transition:.3s;
 
@@ -181,8 +181,8 @@ object-fit:contain;
 border:3px solid #00ff84 !important;
 
 box-shadow:
-0 0 15px #00ff84,
-0 0 25px rgba(0,255,132,.7);
+0 0 18px #00ff84,
+0 0 28px rgba(0,255,132,.8);
 
 }
 
@@ -192,28 +192,29 @@ box-shadow:
 
 position:fixed;
 
-bottom:95px;
 left:15px;
+bottom:95px;
 
-z-index:9999;
+z-index:99999;
 
-background:rgba(0,0,0,.78);
+background:rgba(0,0,0,.80);
 
 padding:12px 16px;
 
-border-radius:16px;
+border-radius:18px;
 
 font-size:16px;
 font-weight:bold;
 
 color:white;
 
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 
 box-shadow:
-0 0 12px rgba(0,255,100,.45);
+0 0 14px rgba(0,255,100,.5);
 
-opacity:0;
+opacity:1;
+
 transition:.4s;
 
 }
@@ -227,7 +228,7 @@ text-align:center;
 font-size:22px;
 font-weight:bold;
 
-margin-top:20px;
+margin-top:25px;
 margin-bottom:18px;
 
 color:white;
@@ -298,6 +299,8 @@ color:red;
 
 <body>
 
+<!-- HEADER -->
+
 <div class="header">
 
 <h1>Rakib IPTV</h1>
@@ -328,6 +331,8 @@ playsinline
 controls>
 
 </video>
+
+<!-- CONTROLS -->
 
 <div class="custom-controls">
 
@@ -404,6 +409,8 @@ class="facebook">
 </a>
 
 </div>
+
+<!-- FOOTER -->
 
 <div class="footer">
 
@@ -678,10 +685,9 @@ import {
 getDatabase,
 ref,
 set,
+get,
 onValue,
-push,
-onDisconnect,
-get
+onDisconnect
 
 }
 
@@ -718,34 +724,30 @@ initializeApp(firebaseConfig);
 const db =
 getDatabase(app);
 
-/* LIVE USERS */
+/* UNIQUE USER */
 
-const connectedRef =
-ref(db,'.info/connected');
-
-onValue(connectedRef,(snap)=>{
-
-if(snap.val()===true){
+const userId =
+Date.now() + "_" +
+Math.random().toString(36).substring(2,8);
 
 const userRef =
-push(ref(db,'liveUsers'));
+ref(db,'liveUsers/'+userId);
+
+/* USER ONLINE */
 
 set(userRef,{
-
 online:true,
 time:Date.now()
-
 });
+
+/* AUTO REMOVE */
 
 onDisconnect(userRef).remove();
 
-}
+/* LIVE USERS */
 
-});
-
-/* LIVE COUNT */
-
-onValue(ref(db,'liveUsers'),(snapshot)=>{
+onValue(ref(db,'liveUsers'),
+(snapshot)=>{
 
 const data =
 snapshot.val();
@@ -754,7 +756,7 @@ const count =
 data ? Object.keys(data).length : 0;
 
 document.getElementById('liveUsers')
-.innerText=count;
+.innerText = count;
 
 });
 
@@ -763,7 +765,11 @@ document.getElementById('liveUsers')
 const totalRef =
 ref(db,'totalViews');
 
-get(totalRef).then(snapshot=>{
+/* COUNT VIEW */
+
+if(!localStorage.getItem('viewed')){
+
+get(totalRef).then((snapshot)=>{
 
 let total =
 snapshot.val() || 0;
@@ -772,7 +778,13 @@ total++;
 
 set(totalRef,total);
 
+localStorage.setItem('viewed','yes');
+
 });
+
+}
+
+/* SHOW TOTAL */
 
 onValue(totalRef,(snapshot)=>{
 
@@ -780,7 +792,7 @@ const total =
 snapshot.val() || 0;
 
 document.getElementById('totalViews')
-.innerText=total;
+.innerText = total;
 
 });
 

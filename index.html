@@ -372,8 +372,18 @@ onclick="nextChannel()">
 </button>
 
 </div>
-
-</div>
+<button id="fitBtn"
+style="
+margin:10px auto;
+display:block;
+padding:8px 15px;
+background:#00cfff;
+color:#000;
+font-weight:bold;
+border:none;
+border-radius:8px;">
+FIT
+</button>
 
 <!-- SEARCH -->
 
@@ -675,7 +685,27 @@ visitor.style.opacity='0';
 },10000);
 
 }
+/* FIT ZOOM FILL */
 
+let fitModes = ["contain","cover","fill"];
+let fitNames = ["FIT","ZOOM","FILL"];
+let currentFit = 0;
+
+document.getElementById("fitBtn").onclick = function(){
+
+currentFit++;
+
+if(currentFit >= fitModes.length){
+currentFit = 0;
+}
+
+document.getElementById("video").style.objectFit =
+fitModes[currentFit];
+
+document.getElementById("fitBtn").innerText =
+fitNames[currentFit];
+
+};
 showUI();
 
 document.querySelector('.player-box')

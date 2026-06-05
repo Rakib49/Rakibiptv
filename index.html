@@ -673,27 +673,7 @@ visitor.style.opacity='0';
 },10000);
 
 }
-/* FIT ZOOM FILL */
 
-let fitModes = ["contain","cover","fill"];
-let fitNames = ["FIT","ZOOM","FILL"];
-let currentFit = 0;
-
-document.getElementById("fitBtn").onclick = function(){
-
-currentFit++;
-
-if(currentFit >= fitModes.length){
-currentFit = 0;
-}
-
-document.getElementById("video").style.objectFit =
-fitModes[currentFit];
-
-document.getElementById("fitBtn").innerText =
-fitNames[currentFit];
-
-};
 showUI();
 
 document.querySelector('.player-box')

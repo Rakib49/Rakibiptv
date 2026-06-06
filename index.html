@@ -193,7 +193,7 @@ box-shadow:
 position:fixed;
 
 left:15px;
-bottom:95px;
+bottom:60px;
 
 z-index:99999;
 
@@ -203,7 +203,7 @@ padding:12px 16px;
 
 border-radius:18px;
 
-font-size:16px;
+font-size:13px;
 font-weight:bold;
 
 color:white;
@@ -225,7 +225,7 @@ transition:.4s;
 
 text-align:center;
 
-font-size:16px;
+font-size:13px;
 font-weight:bold;
 
 margin-top:0px;
@@ -307,10 +307,72 @@ background:black;
 }
 
 .channel-grid{
-height:calc(100vh - 330px);
 overflow-y:auto;
 padding-bottom:20px;
 }
+
+/* GROUP TABS */
+.group-tabs{
+display:flex;
+overflow-x:auto;
+gap:6px;
+padding:6px;
+background:#000;
+position:sticky;
+top:286px;
+z-index:9997;
+}
+.group-tab{
+background:#111;
+color:white;
+border:1px solid #00cfff;
+border-radius:12px;
+padding:6px 10px;
+cursor:pointer;
+white-space:nowrap;
+}
+.group-tab.active-tab{
+background:#00cfff;
+color:black;
+font-weight:bold;
+}
+
+
+.fav-btn{
+position:absolute;
+top:2px;
+right:4px;
+font-size:18px;
+z-index:5;
+cursor:pointer;
+}
+.channel{
+position:relative;
+}
+
+#themeToggle{
+background:#4a0000;
+color:#ffcc33;
+border:1px solid #660000;
+border-radius:14px;
+padding:8px 12px;
+cursor:pointer;
+box-shadow:none;
+}
+body.darkmode .channel{
+background:#121212 !important;
+border-color:#333 !important;
+box-shadow:none !important;
+}
+body.darkmode .channel img{
+filter:brightness(.75) contrast(.95);
+}
+
+
+.channel-name{position:absolute;bottom:2px;left:0;right:0;font-size:10px;text-align:center;color:#fff;background:rgba(0,0,0,.6);border-radius:0 0 12px 12px;padding:1px;}
+#loadingSpinner{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;font-size:22px;background:rgba(0,0,0,.35);padding:4px 8px;border-radius:50%;}
+#topBtn{position:fixed;right:12px;bottom:28px;z-index:99999;display:none;width:30px;height:30px;border-radius:50%;border:none;background:#7a0000;color:white;font-size:12px;}
+
 </style>
 
 </head>
@@ -321,7 +383,7 @@ padding-bottom:20px;
 
 <div class="header">
 
-<h1>Rakib IPTV</h1>
+<div style="display:flex;justify-content:center;align-items:center;gap:12px;"><h1>Rakib IPTV</h1><button id="themeToggle" title="Dark Mode">🌙</button></div>
 
 </div>
 
@@ -393,6 +455,8 @@ onkeyup="searchChannels()">
 
 </div>
 
+<div class="group-tabs" id="groupTabs"></div>
+
 <!-- CHANNELS -->
 
 <div class="channel-grid"
@@ -444,7 +508,10 @@ const playlist =
 'https://raw.githubusercontent.com/Rakib49/Rakibiptv/refs/heads/main/aynaott.m3u';
 
 let channels = [];
+let filteredChannels = [];
 let currentIndex = 0;
+let currentGroup='All';
+let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
 /* LOAD PLAYLIST */
 
@@ -470,20 +537,24 @@ let logo='';
 const match =
 info.match(/tvg-logo="(.*?)"/);
 
-if(match){
-logo=match[1];
-}
+if(match){logo=match[1];}
+let group='Other';
+const g=info.match(/group-title="(.*?)"/i);
+if(g){group=g[1];}
 
 channels.push({
 name,
 url,
-logo
+logo,
+group
 });
 
 }
 
 }
 
+buildTabs();
+filteredChannels = channels;
 renderChannels();
 
 if(channels.length>0){
@@ -494,6 +565,41 @@ playChannel(0);
 
 /* RENDER */
 
+
+function normalizeGroup(g){
+g=(g||'').toLowerCase();
+if(['bangla','bangladesh','indian bangla','inbangla'].includes(g)) return 'Bangla';
+if(g.includes('world cup') || g.includes('fifa world cup')) return '🏆 FIFA World Cup';
+if(g.includes('sport')) return 'Sports';
+if(g.includes('news')) return 'News';
+if(g.includes('movie')) return 'Movies';
+if(g.includes('music')) return 'Music';
+if(g.includes('kid')) return 'Kids';
+if(['english','hindi','urdhu'].includes(g)) return 'International';
+if(['entertainment','drama'].includes(g)) return 'Entertainment';
+return 'Others';
+}
+
+function buildTabs(){
+const tabs=document.getElementById('groupTabs');
+const groups=['All','❤️ Favorites','Bangla','🏆 FIFA World Cup','Sports','News','Entertainment','Movies','Music','Kids','International','Others'];
+tabs.innerHTML=groups.map(g=>`<button class="group-tab ${g==='All'?'active-tab':''}" onclick="filterGroup('${g}',this)">${g}</button>`).join('');
+}
+
+function filterGroup(group,btn){
+currentGroup=group;
+document.querySelectorAll('.group-tab').forEach(x=>x.classList.remove('active-tab'));
+if(btn) btn.classList.add('active-tab');
+if(group==='All'){
+filteredChannels = channels;
+}else if(group==='❤️ Favorites'){
+filteredChannels = channels.filter(c=>favorites.includes(c.url));
+}else{
+filteredChannels = channels.filter(c=>normalizeGroup(c.group)===group);
+}
+renderChannels();
+}
+
 function renderChannels(){
 
 const grid =
@@ -501,20 +607,43 @@ document.getElementById('channelGrid');
 
 grid.innerHTML='';
 
-channels.forEach((ch,index)=>{
+filteredChannels.forEach((ch,index)=>{
 
 const div =
 document.createElement('div');
 
 div.className='channel';
 
+const fav = favorites.includes(ch.url) ? '❤️' : '🤍';
+
 div.innerHTML=`
-
-<img src="${ch.logo}">
-
+<div class="fav-btn">${fav}</div>
+<img src="${ch.logo}"><div class="channel-name">${ch.name}</div>
 `;
 
-div.onclick=()=>playChannel(index);
+div.onclick=()=>playChannel(channels.indexOf(ch));
+
+
+const favBtn = div.querySelector('.fav-btn');
+
+favBtn.addEventListener('click', function(e){
+e.stopPropagation();
+
+if(favorites.includes(ch.url)){
+favorites = favorites.filter(x=>x!==ch.url);
+}else{
+favorites.push(ch.url);
+}
+
+localStorage.setItem('favorites',JSON.stringify(favorites));
+
+if(currentGroup==='❤️ Favorites'){
+filteredChannels = channels.filter(c=>favorites.includes(c.url));
+}
+
+renderChannels();
+});
+
 
 grid.appendChild(div);
 
@@ -522,7 +651,28 @@ grid.appendChild(div);
 
 }
 
+
+function toggleFavorite(event,url){
+
+event.stopPropagation();
+
+if(favorites.includes(url)){
+favorites = favorites.filter(x=>x!==url);
+}else{
+favorites.push(url);
+}
+
+localStorage.setItem('favorites',JSON.stringify(favorites));
+
+if(currentGroup==='❤️ Favorites'){
+filteredChannels = channels.filter(c=>favorites.includes(c.url));
+}
+
+renderChannels();
+}
+
 /* PLAY */
+
 
 function playChannel(index){
 
@@ -567,8 +717,26 @@ el.classList.remove('active');
 
 });
 
-document.querySelectorAll('.channel')[index]
-.classList.add('active');
+const cards = document.querySelectorAll('.channel');
+
+cards.forEach((card,i)=>{
+    if(
+        filteredChannels[i] &&
+        filteredChannels[i].url === channel.url
+    ){
+        card.classList.add('active');
+
+        const rect = card.getBoundingClientRect();
+const topLimit = 320; // player + tabs area
+
+if(rect.top < topLimit || rect.bottom > window.innerHeight){
+    card.scrollIntoView({
+        behavior:'smooth',
+        block:'nearest'
+    });
+}
+    }
+});
 
 }
 
@@ -637,7 +805,7 @@ document.getElementById('search')
 const cards =
 document.querySelectorAll('.channel');
 
-channels.forEach((ch,index)=>{
+filteredChannels.forEach((ch,index)=>{
 
 if(ch.name.toLowerCase()
 .includes(input)){
@@ -676,7 +844,7 @@ setTimeout(()=>{
 controls.style.opacity='0';
 visitor.style.opacity='0';
 
-},5000);
+},2000);
 
 }
 
@@ -705,7 +873,8 @@ ref,
 set,
 get,
 onValue,
-onDisconnect
+onDisconnect,
+runTransaction
 
 }
 
@@ -783,21 +952,14 @@ document.getElementById('liveUsers')
 const totalRef =
 ref(db,'totalViews');
 
-/* COUNT VIEW */
+/* COUNT VIEW - TRANSACTION */
 
 if(!localStorage.getItem('viewed')){
 
-get(totalRef).then((snapshot)=>{
-
-let total =
-snapshot.val() || 0;
-
-total++;
-
-set(totalRef,total);
-
+runTransaction(totalRef,(current)=>{
+return (current || 0) + 1;
+}).then(()=>{
 localStorage.setItem('viewed','yes');
-
 });
 
 }
@@ -812,6 +974,34 @@ snapshot.val() || 0;
 document.getElementById('totalViews')
 .innerText = total;
 
+});
+
+</script>
+
+
+<script>
+(function(){
+const btn=document.getElementById('themeToggle');
+if(!btn) return;
+
+if(localStorage.getItem('darkmode')==='on'){
+ document.body.classList.add('darkmode');
+}
+
+btn.onclick=function(){
+ document.body.classList.toggle('darkmode');
+ localStorage.setItem('darkmode',
+ document.body.classList.contains('darkmode')?'on':'off');
+};
+})();
+</script>
+
+<button id="topBtn">↑</button>
+
+<script>
+document.getElementById('topBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+window.addEventListener('scroll',()=>{
+document.getElementById('topBtn').style.display=window.scrollY>300?'block':'none';
 });
 
 </script>

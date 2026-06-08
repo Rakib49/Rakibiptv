@@ -35,14 +35,14 @@ position:sticky;
 top:0;
 z-index:10000;
 background:#000;
-padding:6px;
+padding:2px;
 text-align:center;
 border-top:1px solid red;
 border-bottom:1px solid red;
 }
 
 .header h1{
-font-size:30px;
+font-size:24px;
 color:#ff1a1a;
 text-shadow:0 0 15px red;
 }
@@ -113,14 +113,14 @@ padding:2px;
 .search-box input{
 
 width:100%;
-padding:8px;
+padding:4px;
 
-font-size:14px;
+font-size:12px;
 
 border:none;
 outline:none;
 
-border-radius:12px;
+border-radius:10px;
 
 background:#111;
 color:white;
@@ -408,22 +408,27 @@ filter:brightness(.75) contrast(.95);
 .header-inner{
 position:relative;
 width:100%;
+height:36px;
 }
+
 .header h1{
 text-align:center;
+line-height:36px;
+margin:0;
 }
+
 #themeToggle{
 position:absolute !important;
-right:2px !important;
+right:8px !important;
 top:50% !important;
 transform:translateY(-50%) !important;
 }
 
-
 #refreshBtn{
-position:fixed;
-top:10px;
-left:10px;
+position:absolute;
+left:8px;
+top:50%;
+transform:translateY(-50%);
 z-index:100001;
 width:34px;
 height:34px;
@@ -439,6 +444,25 @@ font-size:16px;
 cursor:pointer;
 }
 
+
+.notice-ticker{
+background:#111;
+color:#ffcc33;
+font-size:11px;
+font-weight:600;
+padding:4px 0;
+border-top:1px solid #222;
+border-bottom:1px solid #222;
+overflow:hidden;
+white-space:nowrap;
+text-align:left;
+}
+
+
+body.force-desktop video{height:620px!important;}
+body.force-desktop .channel-grid{grid-template-columns:repeat(8,1fr)!important;gap:14px!important;height:calc(100vh - 760px)!important;}
+body.force-desktop .channel{height:95px!important;}
+
 </style>
 
 </head>
@@ -450,6 +474,9 @@ cursor:pointer;
 <div class="header">
 
 <div class="header-inner">
+<button id="refreshBtn" title="Refresh">
+  <i class="fas fa-rotate-right"></i>
+</button>
 <h1>Rakib IPTV</h1>
 <button id="themeToggle" title="Dark Mode">🌙</button>
 </div>
@@ -511,6 +538,15 @@ onclick="nextChannel()">
 </div>
 
 <!-- SEARCH -->
+
+
+
+<div class="notice-bar" style="display:flex;align-items:center;background:#0b0b0b;border-top:1px solid #222;border-bottom:1px solid #222;height:26px;overflow:hidden;">
+<div class="notice-label" style="background:#c62828;color:#fff;font-weight:600;padding:0 8px;height:26px;display:flex;align-items:center;flex-shrink:0;font-size:11px;">NOTICE</div>
+<div class="notice-scroll" style="flex:1;color:#ffd54a;font-size:11px;">
+<marquee scrollamount="3">আমার তৈরি করা Rakib IPTV টেলিভিশন ওয়েবসাইট টি আপনাদের কাছে কেমন লেগেছে? যদি ভালো লেগে থাকে অবশ্যই আমাকে জানাবেন। চ্যানেলের একদম নিচে আমার Telegram এবং Facebook Profile দেওয়া আছে। সেখানে ক্লিক করে মতামত জানাতে ভুলবেন না। কোনো Update প্রয়োজন হলে অবশ্যই জানাবেন।</marquee>
+</div>
+</div>
 
 <div class="search-box">
 
@@ -1040,12 +1076,17 @@ btn.onclick=function(){
 };
 })();
 </script>
-
-<button id="refreshBtn" title="Refresh"><i class="fas fa-rotate-right"></i></button>
 <button id="topBtn">↑</button>
 
 <script>
-const refreshBtn=document.getElementById('refreshBtn'); if(refreshBtn){refreshBtn.onclick=function(){location.reload();};}
+
+const refreshBtn=document.getElementById('refreshBtn');
+if(refreshBtn){
+ refreshBtn.onclick=function(){
+   location.reload();
+ };
+}
+
 const topBtn=document.getElementById('topBtn');
 topBtn.onclick=function(){
  const grid=document.getElementById('channelGrid');

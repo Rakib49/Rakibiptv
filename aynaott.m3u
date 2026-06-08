@@ -363,6 +363,8 @@ https://livetv.powerapp.com.tr/powerturkTV/powerturkhd.smil/playlist.m3u8
 https://autentic-adventure-earth-1-eu.rakuten.wurl.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="Star Sports 1 HD" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/Star_Sports_1_HD.png" group-title="Sports",Star Sports 1 HD
 https://tvsen7.aynaott.com/sspts1/index.m3u8
+#EXTINF:-1 tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_2/images/LOGO_HD/image.png" group-title="Sports",Star Sports 2 HD (720p)
+https://tvsen7.aynaott.com/ssport2hd/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/EWgCBRj.jpeg" group-title="Sports",STAR SPORTS SELECT1 HD
 http://198.195.239.50:8095/StarSportsSelect1/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/uUx2GpH.jpeg" group-title="Sports",SONY SPORTS 2 HD

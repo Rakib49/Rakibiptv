@@ -417,6 +417,21 @@ https://tvex.easypecker.com/SonyAath/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/subirkumarpaul/Logo/56e54462053b1b278b80b532c89c01f17e360fd5/Sony%20Aath.jpeg" group-title="inBangla",Sony Aath 3
 http://198.195.239.50:8095/SonyAath/tracks-v1a1/mono.m3u8
 
+#EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonyentertainmnt_hd.png" group-title="hindi",SONY ENTERTAINMENT TELEVISION HD
+https://edge2.roarzone.net:8447/roarzone/edge3/sonyentertainmnt_hd/index.m3u8?token=46aad9392d25f37101a54a5742377cdee5e8ed67-eb1c0f0780a684e92c4c2b2cbb8c0468-1781028932-1781018132
+
+#EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonymax.png" group-title="hindi",SONY MAX
+https://edge2.roarzone.net:8447/roarzone/edge3/sony_max/index.m3u8?token=7ff75d2e708117e9b2bcdd0b82d14370bd25465b-36ea53d0ae0ff03236487bc29e6d2a91-1781028932-1781018132
+
+#EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonymaxhd.png" group-title="hindi",SONY MAX HD
+https://edge2.roarzone.net:8447/roarzone/edge3/sony_max_hd/index.m3u8?token=91dcfe1a2c825ca0a97a2d0aab5bb9d704607651-2bdcda1ac9a590b62f3c3adad7cf3555-1781028933-1781018133
+
+#EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonymax2.png" group-title="hindi",SONY MAX 2
+https://edge2.roarzone.net:8447/roarzone/edge3/sonymax_2/index.m3u8?token=7f1ed3c6a98b0b09047e3bf535530f0e9e0b1ca1-58d54e99556a63afe3f31bdbb9f92c10-1781028932-1781018132
+
+#EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonysab_hd.png" group-title="hindi",SONY SAB HD
+https://edge2.roarzone.net:8447/roarzone/edge3/sonysab_hd/index.m3u8?token=d716944723f3faf623d0ce3ade1f768c3a3fb51d-0f837dafbab8549afa3f3539d0f0ca2c-1781028933-1781018133
+
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/739539785304281088/zMwNO936_400x400.jpg" group-title="BANGLA",Deshe Bideshe
 https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 #EXTINF:-1 tvg-name="Deshi Tv" tvg-logo="https://www.deshitv.com/images//bangla_logo/DeshTV24-BanglaLogo.png" group-title="Bangladesh",Deshi Tv

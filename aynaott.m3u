@@ -39,9 +39,10 @@ https://tvsen6.aynaott.com/durontotv-live/index.m3u8?e=1779283757&u=78be6644-0a6
 https://tvsen6.aynaott.com/banglatv/index.m3u8?e=1779283758&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=f3e9e2737e35147900c0f4add619ead6
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://i.imgur.com/MpTVSnd.png" group-title="Sports",Nagorik TV Sports
+#EXTINF:-1 tvg-logo="https://i.imgur.com/MpTVSnd.png" group-title="Sports",Nagorik TV
 http://198.195.239.50:8095/nagorik/index.m3u8
-
+#EXTINF:-1 tvg-logo="https://i.imgur.com/MpTVSnd.png" group-title="Sports",Nagorik TV 2
+http://198.195.239.50:8095/nagorik/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://s3.aynaott.com/storage/897698f593fc07974fc46881a440733d" group-title="Bangla",Ananda TV
 https://tvsen6.aynaott.com/anandatv/index.m3u8?e=1779283759&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=504b9350b4703116ca4ab20e4013288e
 #EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/86.png" group-title="bangla",MOVIE BANGLA TV

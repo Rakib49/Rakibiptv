@@ -482,6 +482,9 @@ https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8
 https://tvsen6.aynaott.com/somoytv/index.m3u8
 #EXTINF:-1 tvg-logo="https://s3.aynaott.com/storage/ece71c1163a377fbe2d93f9d28c34f60" group-title="World Cup",Somoy TV 2
 https://tvex.easypecker.com/somyyt/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-name="Caze TV" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/refs/heads/main/caze%20tv.png" group-title="World Cup",Caze TV
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd
+
 #EXTINF:-1 tvg-name="FIFA+ Channel" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(11).jpeg" group-title="World Cup",FIFA+ Channel
 https://37b4c228.wurl.com/manifest/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWZyX0ZJRkFQbHVzRnJlbmNoX0hMUw/6f5437c5-e015-4754-8476-c8c6d27d3a55/1.m3u8
 #EXTINF:-1 tvg-logo="https://s3.aynaott.com/storage/da4282cd107cc3d40efadae488b187e5" group-title="World Cup",Fox Sports 2

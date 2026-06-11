@@ -523,3 +523,13 @@ https://dai.google.com/linear/hls/event/JCAm25qkRXiKcK1AJMlvKQ/master.m3u8
 #EXTINF:-1 tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZOOM/images/LOGO_HD/image.png" group-title="Music",Zoom Global (720p)
 https://d14c63magvk61v.cloudfront.net/strm/channels/zoom/master.m3u8
 
+#EXTINF:-1 tvg-logo="https://bit.ly/30Rtjua" group-title="World Cup",BeIN Sports UHD 3
+https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
+#EXTINF:-1 tvg-logo="https://bit.ly/30Rtjua" group-title="World Cup",BeIN Sports FHD 3
+http://hdlocal.de:8080/group-sky.ddns.net22/sH6JbvQNHVVD/10036
+#EXTINF:-1 tvg-logo="https://bit.ly/3hFUgrj" group-title="World Cup",BeIN Sports UHD 4
+https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
+#EXTINF:-1 tvg-logo="https://bit.ly/3hFUgrj" group-title="World Cup",BeIN Sports FHD 4
+http://hdlocal.de:8080/group-sky.ddns.net22/sH6JbvQNHVVD/10034
+#EXTINF:-1 tvg-name="beIN SPORTS 5 FHD" tvg-logo="https://i.imgur.com/iRKfaee.png" group-title="World Cup",BeIN Sports UHD 5
+https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8

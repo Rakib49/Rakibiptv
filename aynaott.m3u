@@ -533,3 +533,8 @@ https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
 http://hdlocal.de:8080/group-sky.ddns.net22/sH6JbvQNHVVD/10034
 #EXTINF:-1 tvg-name="beIN SPORTS 5 FHD" tvg-logo="https://i.imgur.com/iRKfaee.png" group-title="World Cup",BeIN Sports UHD 5
 https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8
+
+#EXTINF:-1 tvg-logo="https://i0.wp.com/resim.yayins.com/spor/smartspor.png" group-title="World Cup",SMARTSPOR 1
+https://andro.mangeinde4.lat/checklist/androstreamlivesm1.m3u8
+#EXTINF:-1 tvg-logo="https://i0.wp.com/resim.yayins.com/spor/smartspor2.png" group-title="World Cup",SMARTSPOR 2
+https://andro.mangeinde4.lat/checklist/androstreamlivesm2.m3u8

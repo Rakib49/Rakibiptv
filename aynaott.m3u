@@ -450,7 +450,7 @@ https://edge2.roarzone.net:8447/roarzone/edge3/sonymax_2/index.m3u8?token=7f1ed3
 #EXTINF:-1 tvg-logo="https://tvassets.roarzone.net/images/sonysab_hd.png" group-title="hindi",SONY SAB HD
 https://edge2.roarzone.net:8447/roarzone/edge3/sonysab_hd/index.m3u8?token=d716944723f3faf623d0ce3ade1f768c3a3fb51d-0f837dafbab8549afa3f3539d0f0ca2c-1781028933-1781018133
 
-#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/739539785304281088/zMwNO936_400x400.jpg" group-title="BANGLA",Deshe Bideshe
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/739539785304281088/zMwNO936_400x400.jpg" group-title="Bangla",Deshe Bideshe
 https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 #EXTINF:-1 tvg-name="Deshi Tv" tvg-logo="https://www.deshitv.com/images//bangla_logo/DeshTV24-BanglaLogo.png" group-title="Bangla",Deshi Tv
 https://deshitv.deshitv24.net/live/myStream/playlist.m3u8

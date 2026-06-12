@@ -399,7 +399,7 @@ https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/index.m3u8
 https://vods2.aynaott.com/gseriesDrama/tracks-v1a1/mono.ts.m3u8
 #EXTINF:-1 tvg-name="Party Universe" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(1).png" group-title="Music",Party Universe
 https://nomawnoijl.gpcdn.net/akash/partyuniverse/chunks.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/PoxR4sY.png" group-title="Music song",Arabica TV
+#EXTINF:-1 tvg-logo="https://i.imgur.com/PoxR4sY.png" group-title="Music",Arabica TV
 http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 
 #EXTINF:-1 tvg-name="Islamic TV" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(8).jpeg" group-title="Religious",Islamic TV
@@ -452,7 +452,7 @@ https://edge2.roarzone.net:8447/roarzone/edge3/sonysab_hd/index.m3u8?token=d7169
 
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/739539785304281088/zMwNO936_400x400.jpg" group-title="BANGLA",Deshe Bideshe
 https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
-#EXTINF:-1 tvg-name="Deshi Tv" tvg-logo="https://www.deshitv.com/images//bangla_logo/DeshTV24-BanglaLogo.png" group-title="Bangladesh",Deshi Tv
+#EXTINF:-1 tvg-name="Deshi Tv" tvg-logo="https://www.deshitv.com/images//bangla_logo/DeshTV24-BanglaLogo.png" group-title="Bangla",Deshi Tv
 https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
 
 #EXTINF:-1 tvg-name="FIFA+ Channel" tvg-logo="https://raw.githubusercontent.com/Rakib49/Rakibiptv/main/images%20(11).jpeg" group-title="Sports",FIFA+ Channel

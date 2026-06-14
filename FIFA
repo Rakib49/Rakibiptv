@@ -1,0 +1,19 @@
+#EXTM3U
+
+#EXTINF:-1 group-title="Sports",T Sports HD (NIX)
+https://tvex.easypecker.com/TSportsHD_sf_nix/index.m3u8
+
+#EXTINF:-1 group-title="Sports",T Sports HD (BDIX)
+https://tvex.easypecker.com/TSportsHD_sf_bdix/index.m3u8
+
+#EXTINF:-1 group-title="TV",PTV (BDIX)
+https://tvex.easypecker.com/ptv_bdix/index.m3u8
+
+#EXTINF:-1 group-title="Music",SpotyFyz (NIX)
+https://tvex.easypecker.com/spotyfyz_nix/index.m3u8
+
+#EXTINF:-1 group-title="Music",SpotyFyz (BDIX)
+https://tvex.easypecker.com/spotyfyz_bdix/index.m3u8
+
+#EXTINF:-1 group-title="News",Somoy TV
+https://tvex.easypecker.com/somyyt/index.m3u8

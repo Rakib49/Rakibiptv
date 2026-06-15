@@ -11,3 +11,16 @@ https://tvex.easypecker.com/ptv_bdix/index.m3u8
 
 #EXTINF:-1 group-title="Sports",Somoy TV
 https://tvex.easypecker.com/somyyt/index.m3u8
+#EXTM3U
+#EXTINF:-1 ,Caze TV
+https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/1080p-vtt/index.m3u8
+#EXTINF:-1 ,Z বাংলাসোনারা
+http://str2.v3v3v.xyz:2082/live/rokhsi25_951396/POm6KqnW/277428.ts
+#EXTINF:-1 ,beIN SPORTS 4k
+http://go8knm.optikl.ink/X/index.php/Besyria3/video.m3u8
+#EXTINF:-1 ,IDMANTV 🇹🇷
+https://str2.yodacdn.net/idman_300_to_small/tracks-v1a1/mono.m3u8
+#EXTINF:-1 ,DSPORTS FHD
+https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd
+#EXTINF:-1 ,Caze TV BR
+https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/Caze_TV.m3u8

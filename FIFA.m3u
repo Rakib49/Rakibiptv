@@ -9,11 +9,5 @@ https://tvex.easypecker.com/TSportsHD_sf_bdix/index.m3u8
 #EXTINF:-1 group-title="Sports",PTV (BDIX)
 https://tvex.easypecker.com/ptv_bdix/index.m3u8
 
-#EXTINF:-1 group-title="Sports",SpotyFyz (NIX)
-https://tvex.easypecker.com/spotyfyz_nix/index.m3u8
-
-#EXTINF:-1 group-title="Sports",SpotyFyz (BDIX)
-https://tvex.easypecker.com/spotyfyz_bdix/index.m3u8
-
 #EXTINF:-1 group-title="Sports",Somoy TV
 https://tvex.easypecker.com/somyyt/index.m3u8

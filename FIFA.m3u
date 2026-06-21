@@ -98,3 +98,5 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8
 #EXTINF:-1 tvg-logo="http://pitek.diskon.cloud/gambar/forsat.jpg" group-title="WORLD CUP",CCTV 5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
 http://107.150.60.122/live/cctv5hd.m3u8
+#EXTINF:-1 group-title="World Cup" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg",Go Live Tv
+https://d1211whpimeups.cloudfront.net/smil:rtbgo/chunklist.m3u8

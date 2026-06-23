@@ -1,6 +1,8 @@
 #EXTM3U
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", World Cup S1
 https://live05.msdht.app/live/24561735.m3u8
+#EXTINF:-1 group-title="World Cup",PTV
+https://pico.kheladekho.xyz/hls/bdixmasud/index.m3u8
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", World Cup S2
 https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", Fox Sports - FIFA 2026

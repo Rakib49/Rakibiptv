@@ -1,8 +1,8 @@
 #EXTM3U
+#EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwKAr.jpg", trece FIFA
+https://live2.eu-north-1a.cf.dmcdn.net/sec2(rISEotUgGFxxQclRZ0DesH4SUOWmbhi8lDrPimh0BNhlQBR23fKXyReD-caCr0dCJS3ZDaHoXXFQ92MA0ZiTgJ2wYSptNW1ULwhUlmW35G_BpoduL52MzFgo_n-aSOof)/cloud/3/x9ksaba/s/live-720.m3u8
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", World Cup S1
 https://live05.msdht.app/live/24561735.m3u8
-#EXTINF:-1 group-title="World Cup",PTV
-https://pico.kheladekho.xyz/hls/bdixmasud/index.m3u8
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", World Cup S2
 https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
 #EXTINF:-1 group-title="Sports" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg", Fox Sports - FIFA 2026
@@ -102,3 +102,5 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8
 http://107.150.60.122/live/cctv5hd.m3u8
 #EXTINF:-1 group-title="World Cup" tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg",Go Live Tv
 https://d1211whpimeups.cloudfront.net/smil:rtbgo/chunklist.m3u8
+#EXTINF:-1 group-title="World Cup",PTV
+https://pico.kheladekho.xyz/hls/bdixmasud/index.m3u8

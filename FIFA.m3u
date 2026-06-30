@@ -49,16 +49,11 @@ https://1nyaler.streamhostingcdn.top/stream/26/index.m3u8
 
 #EXTINF:-1 tvg-id="DAZN 1" tvg-name="DAZN 1" tvg-logo="https://i.postimg.cc/Y903JSq8/20260612-095648.jpg" group-title="FIFA",DAZN 1
 http://znty.dyndns.org:5010/hls/eleven1.m3u8
-#EXTINF:-1 tvg-id="ESPN" tvg-name="ESPN" tvg-logo="https://i.postimg.cc/Y903JSq8/20260612-095648.jpg" group-title="FIFA",ESPN
-https://1nyaler.streamhostingcdn.top/stream/97/index.m3u8
+
 # Playlist Name: FIFA BDIX
 # Last Update: 05:09 PM 17-06-2026
 # Facebook Page: https://www.facebook.com/profile.php?id=61590515402166
 # Website: https://fastiptvbackup.edgeone.app
-
-
-#EXTINF:-1 tvg-id="beIN SPORTS 1 UHD" tvg-name="beIN SPORTS 1 UHD" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",beIN SPORTS 1 UHD
-http://proxpanel.cc/h1wqD6CY/byxHYgX/707929
 
 #EXTINF:-1 tvg-id="WIN_Sports" tvg-name="WIN Sports" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",WIN Sports
 https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8
@@ -71,7 +66,6 @@ http://41.223.30.230/FOXSPORTS1/index.m3u8
 
 #EXTINF:-1 tvg-id="FS2" tvg-name="FS2" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",FS2
 https://1nyaler.streamhostingcdn.top/stream/26/index.m3u8
-
 
 #EXTINF:-1 tvg-id="DAZN 1" tvg-name="DAZN 1" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",DAZN 1
 http://znty.dyndns.org:5010/hls/eleven1.m3u8
